@@ -7,7 +7,7 @@ const Form = dynamic(() => import("@/components/pages/contact/Form"));
 export const metadata: Metadata = {
   title: "Contact | Rohan Bondre",
   description: "Get in touch with Rohan Bondre",
-  metadataBase: new URL("https://github.com/therohanbondre"),
+  metadataBase: new URL("https://rohan-bondre-profile.vercel.app"),
   alternates: {
     canonical: "/contact",
   },

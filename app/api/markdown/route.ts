@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   const canonicalPath =
     path === "/" ? "" : path.startsWith("/") ? path : `/${path}`;
   // TODO: Replace with your deployed domain once available
-  const canonicalUrl = `https://github.com/therohanbondre${canonicalPath}`;
+  const canonicalUrl = `https://rohan-bondre-profile.vercel.app${canonicalPath}`;
 
   const encoder = new TextEncoder();
   const encodedContent = encoder.encode(content);

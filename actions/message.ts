@@ -25,58 +25,87 @@ const validate = createServerValidate({
   },
 });
 
-export async function AddMessage(prev: unknown, formData: FormData) {
+export async function AddMessage(
+  prev: unknown,
+  formData: FormData,
+): Promise<{ status: number; message: string[] } | ReturnType<typeof validate>> {
   try {
-    // ── 1. Verify Cloudflare Turnstile captcha ──────────────────────────
-    // Skip captcha in development so you can test the form locally
+    // ── 1. Turnstile captcha (skipped in development) ───────────────────
     if (env.ENV !== "development") {
-      const turnstileResponse = formData.get("cf-turnstile-response");
-      if (!turnstileResponse) {
-        return { status: 400, message: ["Captcha verification failed. Please try again."] };
+      const token = formData.get("cf-turnstile-response");
+      if (!token || typeof token !== "string" || token.trim() === "") {
+        return {
+          status: 400,
+          message: ["Captcha verification failed. Please refresh and try again."],
+        };
       }
 
-      const verifyResponse = await fetch(
-        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `secret=${env.TURNSTILE_SECRET_KEY}&response=${turnstileResponse}`,
-        },
-      );
+      let verifyOk = false;
+      try {
+        const verifyRes = await fetch(
+          "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({
+              secret:   env.TURNSTILE_SECRET_KEY,
+              response: token,
+            }).toString(),
+          },
+        );
+        if (verifyRes.ok) {
+          const data = await verifyRes.json() as { success: boolean };
+          verifyOk = data.success === true;
+        }
+      } catch {
+        // Cloudflare unreachable — fail closed
+        return {
+          status: 503,
+          message: [
+            "Captcha service unavailable. Please try again in a moment.",
+          ],
+        };
+      }
 
-      const verifyData = await verifyResponse.json();
-      if (!verifyData.success) {
-        return { status: 400, message: ["Invalid captcha response. Please refresh and try again."] };
+      if (!verifyOk) {
+        return {
+          status: 400,
+          message: ["Invalid captcha. Please reload the page and try again."],
+        };
       }
     }
 
     // ── 2. Validate form fields ─────────────────────────────────────────
     const data = await validate(formData);
 
-    // ── 3. Send email — await directly so SMTP errors surface ──────────
+    // ── 3. Send email ───────────────────────────────────────────────────
     try {
       await mail.send(data);
-    } catch (smtpError) {
-      // SMTP failed (wrong password, network, etc.)
-      // Log server-side but return a clear user-facing message
-      console.error("[Contact Form] SMTP error:", smtpError);
+    } catch (smtpErr) {
+      console.error("[Contact] SMTP error:", smtpErr);
       return {
         status: 500,
         message: [
           "Email delivery failed. Please contact me directly at rohanbondre96@gmail.com",
         ],
-      } satisfies { status: number; message: string[] };
+      };
     }
 
     return {
       status: 200,
       message: ["Message sent! I'll get back to you soon."],
-    } satisfies { status: number; message: string[] };
-
+    };
   } catch (e) {
-    if (e instanceof ServerValidateError) {
-      return e.formState;
-    }
-    throw e;
+    // TanStack form validation errors — must re-throw so the library handles them
+    if (e instanceof ServerValidateError) throw e;
+
+    // Any other unexpected error — return a safe message instead of crashing
+    console.error("[Contact] Unexpected error:", e);
+    return {
+      status: 500,
+      message: [
+        "Something went wrong. Please contact me directly at rohanbondre96@gmail.com",
+      ],
+    };
   }
 }

@@ -4,7 +4,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy | Rohan Bondre",
   description: "Privacy policy for Rohan Bondre's portfolio.",
-  metadataBase: new URL("https://github.com/therohanbondre"),
+  metadataBase: new URL("https://rohan-bondre-profile.vercel.app"),
   alternates: {
     canonical: "/privacy",
   },

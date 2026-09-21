@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Home | Rohan Bondre",
   description:
     "Computer Engineering Graduate | Software Developer | AI & Cybersecurity Enthusiast. View my bio, work experience, projects and technologies.",
-  metadataBase: new URL("https://github.com/therohanbondre"),
+  metadataBase: new URL("https://rohan-bondre-profile.vercel.app"),
   alternates: {
     canonical: "/",
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
       "Computer Engineering Graduate | Software Developer | AI & Cybersecurity Enthusiast.",
     siteName: "Rohan Bondre",
     type: "website",
-    url: "https://github.com/therohanbondre",
+    url: "https://rohan-bondre-profile.vercel.app",
   },
   twitter: {
     card: "summary_large_image",

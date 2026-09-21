@@ -5,7 +5,7 @@ import Grid from "@/components/pages/projects/Grid";
 export const metadata: Metadata = {
   title: "Projects | Rohan Bondre",
   description: "Projects by Rohan Bondre",
-  metadataBase: new URL("https://github.com/therohanbondre"),
+  metadataBase: new URL("https://rohan-bondre-profile.vercel.app"),
   alternates: {
     canonical: "/projects",
   },

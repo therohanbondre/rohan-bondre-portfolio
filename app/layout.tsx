@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Rohan Bondre",
-      url: "https://github.com/therohanbondre",
+      url: "https://rohan-bondre-profile.vercel.app",
     },
   ],
 };
@@ -105,9 +105,9 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "Person",
-                  "@id": "https://github.com/therohanbondre/#person",
+                  "@id": "https://rohan-bondre-profile.vercel.app/#person",
                   name: "Rohan Bondre",
-                  url: "https://github.com/therohanbondre",
+                  url: "https://rohan-bondre-profile.vercel.app",
                   sameAs: [
                     "https://www.linkedin.com/in/rohan-bondre1/",
                     "https://github.com/therohanbondre",
@@ -126,7 +126,7 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://github.com/therohanbondre/#website",
+                  "@id": "https://rohan-bondre-profile.vercel.app/#website",
                   name: "Rohan Bondre's Portfolio",
                   description:
                     "Computer Engineering Graduate | Software Developer | AI & Cybersecurity Enthusiast",

@@ -9,9 +9,9 @@ import { getTechnologyCategoryLabel } from "@/lib/utils";
 // Update these constants with your own details.
 // They are used in the markdown representations of your pages (for LLM agents).
 const OWNER_NAME = "Rohan Bondre";
-const SITE_URL = "https://github.com/therohanbondre"; // TODO: Replace with deployed domain
+const SITE_URL = "https://rohan-bondre-profile.vercel.app"; // TODO: Replace with deployed domain
 const OWNER_EMAIL = "rohanbondre96@gmail.com";
-const OWNER_GITHUB = "https://github.com/therohanbondre";
+const OWNER_GITHUB = "https://rohan-bondre-profile.vercel.app";
 const OWNER_LINKEDIN = "https://www.linkedin.com/in/rohan-bondre1/";
 // ─────────────────────────────────────────────────────────────────────────────
 

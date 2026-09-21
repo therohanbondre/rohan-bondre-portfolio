@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Achievements | Rohan Bondre",
   description:
     "Academic achievements, certifications, leadership activities, and milestones of Rohan Bondre.",
-  metadataBase: new URL("https://github.com/therohanbondre"),
+  metadataBase: new URL("https://rohan-bondre-profile.vercel.app"),
   alternates: {
     canonical: "/achievements",
   },

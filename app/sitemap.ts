@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 // TODO: Replace this URL with your actual deployed domain once you have one.
-const BASE_URL = "https://github.com/therohanbondre";
+const BASE_URL = "https://rohan-bondre-profile.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

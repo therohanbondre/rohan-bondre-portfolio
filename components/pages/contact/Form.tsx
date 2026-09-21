@@ -33,20 +33,29 @@ function inputClass(hasError: boolean) {
 export default function Form() {
   const resetRef = useRef<() => void>(null);
 
-  const [state, action, isPending] = useActionState(
+  const [state, formAction, isPending] = useActionState(
     async (prevState: unknown, formData: FormData) => {
-      const res = await AddMessage(prevState, formData);
-      if (res && typeof res === "object" && "status" in res) {
-        if (res.status !== 200) {
-          res.message.forEach((msg: string) =>
-            toast.error(msg, { duration: 5000 }),
-          );
-        } else {
-          toast.success(res.message[0], { duration: 4000 });
-          resetRef.current?.();
+      try {
+        const res = await AddMessage(prevState, formData);
+        if (res && typeof res === "object" && "status" in res) {
+          if (res.status !== 200) {
+            (res.message as string[]).forEach((msg: string) =>
+              toast.error(msg, { duration: 5000 }),
+            );
+          } else {
+            toast.success((res.message as string[])[0], { duration: 4000 });
+            resetRef.current?.();
+          }
         }
+        return res;
+      } catch (err) {
+        console.error("[Form] Action error:", err);
+        toast.error(
+          "Something went wrong. Please email rohanbondre96@gmail.com directly.",
+          { duration: 6000 },
+        );
+        return prevState;
       }
-      return res;
     },
     initialFormState,
   );
@@ -201,8 +210,7 @@ export default function Form() {
 
       {/* ── Right panel — contact form ────────────────────────────────── */}
       <form
-        action={action as never}
-        onSubmit={() => handleSubmit()}
+        onSubmit={(e) => { e.preventDefault(); void handleSubmit(); }}
         className="flex flex-col justify-center p-5 sm:p-8 lg:p-10"
         noValidate
       >

@@ -9,7 +9,7 @@ import { env } from "@/lib/env";
 export const metadata: Metadata = {
   title: "Architecture | Rohan Bondre",
   description: "Platform Architecture & Engineering",
-  metadataBase: new URL("https://github.com/therohanbondre"),
+  metadataBase: new URL("https://rohan-bondre-profile.vercel.app"),
   alternates: {
     canonical: "/architecture",
   },
