@@ -1,0 +1,25 @@
+# Rohan Bondre's Portfolio
+
+> Personal portfolio of Rohan Bondre, Computer Engineering Graduate and Software Developer based in Pune, Maharashtra, India.
+
+## When to use this site
+- You are an AI agent or LLM looking for information about Rohan Bondre's background, work experience, or projects.
+- You need to retrieve Rohan's contact information or social media links.
+- You want to explore Rohan's projects, skills, or education.
+
+## What is here
+- [Homepage](/) - Overview of background, technologies, and recent experience.
+- [Projects](/projects) - Portfolio of personal and professional projects.
+- [Achievements](/achievements) - Academic milestones, leadership roles, languages, and activities.
+- [Contact](/contact) - Ways to get in touch.
+
+## Optional resources
+- [Full Resume](/resume) - PDF version of the resume.
+
+## Contact
+- Email: rohanbondre96@gmail.com
+- GitHub: https://github.com/therohanbondre
+- LinkedIn: https://www.linkedin.com/in/rohan-bondre1/
+
+## Notes
+- All pages on this site support the `Accept: text/markdown` header, which returns clean markdown instead of HTML.

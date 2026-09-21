@@ -1,0 +1,451 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "tailwind-scrollbar";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic:  conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESIGN TOKENS  —  data-theme="obsidian | forest | cyber"  on <html>
+   Default / fallback = Obsidian.  All themes are dark.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. OBSIDIAN — futuristic dev / AI ───────────────────────────────────── */
+:root,
+html[data-theme="obsidian"] {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --bg-page:          #070A0F;
+  --bg-surface:       #0D121A;
+  --bg-elevated:      #111923;
+  --bg-glow-a:        rgba(34, 211, 238, 0.05);
+  --bg-glow-b:        rgba(20, 184, 166, 0.03);
+
+  /* Borders */
+  --border-subtle:    #1E293B;
+  --border-medium:    rgba(34, 211, 238, 0.18);
+
+  /* Text */
+  --text-primary:     #F1F5F9;
+  --text-secondary:   #94A3B8;
+  --text-muted:       rgba(148, 163, 184, 0.60);
+  --text-faint:       rgba(100, 116, 139, 0.50);
+
+  /* Accent */
+  --primary:          #22D3EE;
+  --secondary:        #14B8A6;
+  --accent:           #67E8F9;
+  --accent-soft:      rgba(34, 211, 238, 0.10);
+  --accent-border:    rgba(34, 211, 238, 0.35);
+  --accent-glow:      rgba(34, 211, 238, 0.35);
+
+  /* Interaction */
+  --hover-color:      #67E8F9;
+  --active-color:     #22D3EE;
+  --card-glow:        rgba(34, 211, 238, 0.08);
+  --btn-glow:         rgba(34, 211, 238, 0.25);
+  --link-color:       #22D3EE;
+  --link-hover:       #67E8F9;
+
+  /* Nav / footer */
+  --bg-nav:           rgba(7, 10, 15, 0.85);
+  --border-nav:       rgba(34, 211, 238, 0.12);
+
+  /* Scrollbar */
+  --scrollbar-thumb:  #1E293B;
+  --scrollbar-track:  #070A0F;
+
+  /* Tooltip */
+  --tooltip-bg:       #0D121A;
+  --tooltip-text:     #22D3EE;
+  --tooltip-ring:     rgba(34, 211, 238, 0.35);
+
+  /* Cursor orbital */
+  --cursor-primary:   #22D3EE;
+  --cursor-secondary: #14B8A6;
+
+  /* Background canvas dots */
+  --canvas-dot:       rgba(34, 211, 238, 0.25);
+  --canvas-dot-near:  rgba(34, 211, 238, 0.55);
+
+  /* Inline surface overrides (used by component classes below) */
+  --surface-neutral-950:    #070A0F;
+  --surface-neutral-900:    #0D121A;
+  --surface-neutral-900-40: rgba(13, 18, 26, 0.60);
+  --surface-neutral-950-40: rgba(7,  10, 15, 0.70);
+  --surface-neutral-950-50: rgba(7,  10, 15, 0.65);
+  --surface-neutral-950-70: rgba(7,  10, 15, 0.85);
+  --surface-neutral-800-90: rgba(13, 18, 26, 0.97);
+}
+
+/* ── 2. FOREST — natural engineering ─────────────────────────────────────── */
+html[data-theme="forest"] {
+  color-scheme: dark;
+
+  --bg-page:          #07110D;
+  --bg-surface:       #0C1813;
+  --bg-elevated:      #102019;
+  --bg-glow-a:        rgba(52, 211, 153, 0.06);
+  --bg-glow-b:        rgba(20, 184, 166, 0.04);
+
+  --border-subtle:    #19352A;
+  --border-medium:    rgba(52, 211, 153, 0.20);
+
+  --text-primary:     #ECFDF5;
+  --text-secondary:   #94A3A6;
+  --text-muted:       rgba(148, 163, 166, 0.60);
+  --text-faint:       rgba(100, 130, 110, 0.50);
+
+  --primary:          #34D399;
+  --secondary:        #14B8A6;
+  --accent:           #6EE7B7;
+  --accent-soft:      rgba(52, 211, 153, 0.10);
+  --accent-border:    rgba(52, 211, 153, 0.32);
+  --accent-glow:      rgba(52, 211, 153, 0.30);
+
+  --hover-color:      #6EE7B7;
+  --active-color:     #34D399;
+  --card-glow:        rgba(52, 211, 153, 0.07);
+  --btn-glow:         rgba(52, 211, 153, 0.22);
+  --link-color:       #34D399;
+  --link-hover:       #6EE7B7;
+
+  --bg-nav:           rgba(7, 17, 13, 0.88);
+  --border-nav:       rgba(52, 211, 153, 0.14);
+
+  --scrollbar-thumb:  #19352A;
+  --scrollbar-track:  #07110D;
+
+  --tooltip-bg:       #0C1813;
+  --tooltip-text:     #34D399;
+  --tooltip-ring:     rgba(52, 211, 153, 0.35);
+
+  --cursor-primary:   #34D399;
+  --cursor-secondary: #14B8A6;
+
+  --canvas-dot:       rgba(52, 211, 153, 0.22);
+  --canvas-dot-near:  rgba(52, 211, 153, 0.50);
+
+  --surface-neutral-950:    #07110D;
+  --surface-neutral-900:    #0C1813;
+  --surface-neutral-900-40: rgba(12, 24, 19, 0.60);
+  --surface-neutral-950-40: rgba(7,  17, 13, 0.70);
+  --surface-neutral-950-50: rgba(7,  17, 13, 0.65);
+  --surface-neutral-950-70: rgba(7,  17, 13, 0.88);
+  --surface-neutral-800-90: rgba(12, 24, 19, 0.97);
+}
+
+/* ── 3. CYBER — AI / cybersecurity ───────────────────────────────────────── */
+html[data-theme="cyber"] {
+  color-scheme: dark;
+
+  --bg-page:          #0B0712;
+  --bg-surface:       #120C1D;
+  --bg-elevated:      #181025;
+  --bg-glow-a:        rgba(167, 139, 250, 0.07);
+  --bg-glow-b:        rgba(217, 70,  239, 0.04);
+
+  --border-subtle:    #2A1D3A;
+  --border-medium:    rgba(167, 139, 250, 0.22);
+
+  --text-primary:     #FAF5FF;
+  --text-secondary:   #A8A0B8;
+  --text-muted:       rgba(168, 160, 184, 0.60);
+  --text-faint:       rgba(120, 100, 150, 0.50);
+
+  --primary:          #A78BFA;
+  --secondary:        #D946EF;
+  --accent:           #E879F9;
+  --accent-soft:      rgba(167, 139, 250, 0.10);
+  --accent-border:    rgba(167, 139, 250, 0.35);
+  --accent-glow:      rgba(167, 139, 250, 0.32);
+
+  --hover-color:      #E879F9;
+  --active-color:     #A78BFA;
+  --card-glow:        rgba(167, 139, 250, 0.08);
+  --btn-glow:         rgba(167, 139, 250, 0.28);
+  --link-color:       #A78BFA;
+  --link-hover:       #E879F9;
+
+  --bg-nav:           rgba(11, 7, 18, 0.88);
+  --border-nav:       rgba(167, 139, 250, 0.16);
+
+  --scrollbar-thumb:  #2A1D3A;
+  --scrollbar-track:  #0B0712;
+
+  --tooltip-bg:       #120C1D;
+  --tooltip-text:     #A78BFA;
+  --tooltip-ring:     rgba(167, 139, 250, 0.40);
+
+  --cursor-primary:   #A78BFA;
+  --cursor-secondary: #D946EF;
+
+  --canvas-dot:       rgba(167, 139, 250, 0.20);
+  --canvas-dot-near:  rgba(232, 121, 249, 0.48);
+
+  --surface-neutral-950:    #0B0712;
+  --surface-neutral-900:    #120C1D;
+  --surface-neutral-900-40: rgba(18, 12, 29, 0.60);
+  --surface-neutral-950-40: rgba(11, 7,  18, 0.70);
+  --surface-neutral-950-50: rgba(11, 7,  18, 0.65);
+  --surface-neutral-950-70: rgba(11, 7,  18, 0.88);
+  --surface-neutral-800-90: rgba(18, 12, 29, 0.97);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEME TRANSITION — gated by .theme-ready (added after first JS mount)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html.theme-ready *,
+html.theme-ready *::before,
+html.theme-ready *::after {
+  transition:
+    background-color 300ms ease,
+    border-color     300ms ease,
+    color            250ms ease,
+    box-shadow       300ms ease,
+    opacity          250ms ease !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+
+  body {
+    color:            var(--text-secondary);
+    background-color: var(--bg-page);
+    background-image:
+      radial-gradient(at 0%   0%,   var(--bg-glow-a) 0px, transparent 55%),
+      radial-gradient(at 100% 100%, var(--bg-glow-b) 0px, transparent 55%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SEMANTIC COMPONENT OVERRIDES
+   Map Tailwind's hardcoded neutral-9xx classes → theme surface tokens.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Nav & footer */
+nav.portfolio-nav,
+footer.portfolio-footer {
+  background-color: var(--bg-nav)     !important;
+  border-color:     var(--border-nav) !important;
+}
+
+/* Surface remaps — all three themes */
+[data-theme] .bg-neutral-950       { background-color: var(--surface-neutral-950)    !important; }
+[data-theme] .bg-neutral-900       { background-color: var(--surface-neutral-900)    !important; }
+[data-theme] .bg-neutral-950\/70   { background-color: var(--surface-neutral-950-70) !important; }
+[data-theme] .bg-neutral-900\/40   { background-color: var(--surface-neutral-900-40) !important; }
+[data-theme] .bg-neutral-950\/40   { background-color: var(--surface-neutral-950-40) !important; }
+[data-theme] .bg-neutral-950\/50   { background-color: var(--surface-neutral-950-50) !important; }
+[data-theme] .bg-neutral-800\/90   { background-color: var(--surface-neutral-800-90) !important; }
+
+/* Text remaps */
+[data-theme] .text-white     { color: var(--text-primary)   !important; }
+[data-theme] .text-white\/90 { color: var(--text-primary)   !important; opacity: 0.90; }
+[data-theme] .text-white\/80 { color: var(--text-primary)   !important; opacity: 0.80; }
+[data-theme] .text-white\/70 { color: var(--text-secondary) !important; opacity: 0.90; }
+[data-theme] .text-white\/60 { color: var(--text-secondary) !important; opacity: 0.75; }
+[data-theme] .text-white\/50 { color: var(--text-muted)     !important; }
+[data-theme] .text-white\/40 { color: var(--text-faint)     !important; }
+[data-theme] .text-white\/30 { color: var(--text-faint)     !important; opacity: 0.70; }
+
+/* Border remaps */
+[data-theme] .border-white\/5  { border-color: var(--border-subtle) !important; }
+[data-theme] .border-white\/10 { border-color: var(--border-subtle) !important; }
+[data-theme] .border-white\/30 { border-color: var(--border-medium) !important; }
+
+/* bg-white opacity remaps */
+[data-theme] .bg-white\/5  { background-color: var(--accent-soft) !important; }
+[data-theme] .bg-white\/10 { background-color: var(--accent-soft) !important; }
+
+/* Input fields */
+[data-theme] input,
+[data-theme] textarea {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-elevated) !important;
+}
+[data-theme] input::placeholder,
+[data-theme] textarea::placeholder { color: var(--text-muted) !important; }
+[data-theme] input:focus,
+[data-theme] textarea:focus { background-color: var(--bg-surface) !important; }
+
+/* ── Accent remap: all emerald-* classes → theme accent ──────────────────── */
+
+[data-theme] .text-emerald-400           { color: var(--primary) !important; }
+[data-theme] .text-emerald-300           { color: var(--accent)  !important; }
+[data-theme] .text-blue-400              { color: var(--primary) !important; }
+[data-theme] .border-emerald-500\/30     { border-color: var(--accent-border) !important; opacity: 0.80; }
+[data-theme] .border-emerald-500\/40     { border-color: var(--accent-border) !important; }
+[data-theme] .border-emerald-500\/50     { border-color: var(--accent-border) !important; opacity: 1.0; }
+[data-theme] .bg-emerald-500\/10         { background-color: var(--accent-soft) !important; }
+[data-theme] .ring-emerald-400\/50       { --tw-ring-color: var(--accent-border) !important; }
+
+[data-theme] .hover\:text-emerald-400:hover      { color: var(--hover-color)  !important; }
+[data-theme] .hover\:border-emerald-500\/30:hover { border-color: var(--accent-border) !important; }
+[data-theme] .hover\:border-emerald-500\/50:hover { border-color: var(--primary) !important; }
+
+[data-theme] .shadow-\[0_0_30px_rgba\(16\,185\,129\,0\.1\)\] {
+  box-shadow: 0 0 30px var(--card-glow) !important;
+}
+[data-theme] .hover\:shadow-\[0_0_30px_rgba\(16\,185\,129\,0\.1\)\]:hover {
+  box-shadow: 0 0 30px var(--accent-glow) !important;
+}
+[data-theme] .hover\:shadow-\[0_0_20px_rgba\(16\,185\,129\,0\.15\)\]:hover {
+  box-shadow: 0 0 20px var(--btn-glow) !important;
+}
+[data-theme] .focus-visible\:ring-emerald-500:focus-visible {
+  --tw-ring-color: var(--accent-border) !important;
+}
+
+/* Tooltip text inside tech-icon cards */
+[data-theme] .bg-neutral-800\/90 {
+  color: var(--primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INTERACTION UTILITY CLASSES
+   Apply these to cards, buttons, and links that should respond to the theme.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Card — subtle lift + glow on hover */
+.theme-card {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.theme-card:hover {
+  transform:   translateY(-3px);
+  box-shadow:  0 0 24px var(--card-glow), 0 8px 24px rgba(0,0,0,0.30);
+  border-color: var(--accent-border) !important;
+}
+
+/* Button — scale + glow on hover */
+.theme-btn {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.theme-btn:hover:not(:disabled) {
+  transform:   scale(1.02);
+  box-shadow:  0 0 16px var(--btn-glow);
+  border-color: var(--primary) !important;
+  color:        var(--hover-color) !important;
+}
+.theme-btn:active:not(:disabled) { transform: scale(0.97); }
+
+/* Link — colour transition + underline slide */
+.theme-link {
+  color: var(--link-color);
+  position: relative;
+  transition: color 200ms ease;
+}
+.theme-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--link-hover);
+  transition: width 250ms ease;
+}
+.theme-link:hover { color: var(--link-hover); }
+.theme-link:hover::after { width: 100%; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CUSTOM ANIMATION UTILITIES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.45s ease-out both; }
+
+/* Spinning ring for selected theme circle */
+@keyframes spin-ring {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.theme-ring-spin { animation: spin-ring 3s linear infinite; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VIEW TRANSITION RECIPES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --duration-exit:  150ms;
+  --duration-enter: 210ms;
+  --duration-move:  400ms;
+}
+
+@keyframes fade {
+  from { filter: blur(3px); opacity: 0; }
+  to   { filter: blur(0);   opacity: 1; }
+}
+@keyframes slide {
+  from { translate: var(--slide-offset); }
+  to   { translate: 0; }
+}
+@keyframes slide-y {
+  from { transform: translateY(var(--slide-y-offset, 10px)); }
+  to   { transform: translateY(0); }
+}
+
+::view-transition-old(.fade-out) { animation: var(--duration-exit) ease-in fade reverse; }
+::view-transition-new(.fade-in)  { animation: var(--duration-enter) ease-out var(--duration-exit) both fade; }
+
+::view-transition-old(.slide-down) {
+  animation: var(--duration-exit) ease-out both fade reverse,
+             var(--duration-exit) ease-out both slide-y reverse;
+}
+::view-transition-new(.slide-up) {
+  animation: var(--duration-enter) ease-in var(--duration-exit) both fade,
+             var(--duration-move) ease-in both slide-y;
+}
+::view-transition-old(.nav-forward) {
+  --slide-offset: -60px;
+  animation: var(--duration-exit) ease-in both fade reverse,
+             var(--duration-move) ease-in-out both slide reverse;
+}
+::view-transition-new(.nav-forward) {
+  --slide-offset: 60px;
+  animation: var(--duration-enter) ease-out var(--duration-exit) both fade,
+             var(--duration-move) ease-in-out both slide;
+}
+::view-transition-old(.nav-back) {
+  --slide-offset: 60px;
+  animation: var(--duration-exit) ease-in both fade reverse,
+             var(--duration-move) ease-in-out both slide reverse;
+}
+::view-transition-new(.nav-back) {
+  --slide-offset: -60px;
+  animation: var(--duration-enter) ease-out var(--duration-exit) both fade,
+             var(--duration-move) ease-in-out both slide;
+}
+::view-transition-group(.morph)      { animation-duration: var(--duration-move); }
+::view-transition-image-pair(.morph) { animation-name: via-blur; }
+@keyframes via-blur { 30% { filter: blur(3px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-old(*), ::view-transition-new(*), ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

@@ -1,0 +1,32 @@
+# Rohan Bondre's Portfolio - Full Context
+
+> Complete context for Rohan Bondre's portfolio and professional background.
+
+## About
+Rohan Anil Bondre is a Computer Engineering Graduate from Indira College of Engineering and Management, Pune (Savitribai Phule Pune University), with a strong interest in Operating Systems, System Design, Networking, Artificial Intelligence, and Cybersecurity.
+
+## When to use this site
+- You are an AI agent or LLM looking for information about Rohan Bondre's background, work experience, or projects.
+- You need to retrieve Rohan's contact information or social media links.
+- You want to explore Rohan's technical skills, education, or projects.
+
+## Core Pages
+- [Homepage](/) - Overview of background, technologies, and recent experience.
+- [Projects](/projects) - Portfolio of personal and professional projects.
+- [Achievements](/achievements) - Academic milestones, leadership roles, languages, and activities.
+- [Contact](/contact) - Ways to get in touch, including social links and an email form.
+
+## API & Markdown Negotiation
+This site fully supports `Accept: text/markdown` content negotiation. AI agents can request any HTML page route with the `Accept: text/markdown` header to receive a clean, token-efficient markdown version of the content, skipping the Next.js app shell and UI components.
+
+## Technical Stack
+This portfolio is built with:
+- Next.js (App Router)
+- React 19
+- TailwindCSS (v4)
+- Bun
+
+## Contact
+Email: rohanbondre96@gmail.com
+LinkedIn: https://www.linkedin.com/in/rohan-bondre1/
+GitHub: https://github.com/therohanbondre
